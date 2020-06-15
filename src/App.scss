@@ -1,0 +1,27 @@
+
+
+.todo {
+    width: 746px;
+    height: 529px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    font-size: 14px;
+
+    &__sidebar {
+        background-color: #B6E6BD;
+        width: 200px;
+        height: inherit;
+        border-right: 1px solid #F1F1F1;
+        padding: 57px 27px 0;
+
+    }
+
+    &__tasks {
+        background-color: #fff;
+        width: 546px;
+        height: inherit;
+    }
+}
