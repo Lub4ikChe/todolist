@@ -98,5 +98,9 @@
         &:hover {
             background-color: #4DD599;
         }
+
+        &:active {
+            background-color: darken(#4DD599, 25%);
+        }
     }
 }

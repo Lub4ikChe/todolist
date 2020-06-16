@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Tasks.scss';
 
 
 
 function Tasks() {
+
+    const [showAddCard, setAddCard] = useState(false);
+
+    const toggleAddCard = () => {
+        setAddCard(!showAddCard);
+    }
+
 
     return (
         <div className="tasks__card">
@@ -38,17 +45,25 @@ function Tasks() {
                     </div>
                 </li>
             </ul>
-            <div className="tasks__card__add__task">
-                <i>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 1V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </i>
-                <span>
-                    Нова задача
+
+            {showAddCard ? <div className="tasks__card__add">
+                <input placeholder="Текс завдання" className="tasks__card__add__input" />
+                <button className="tasks__card__add__addbutton" >Добавити</button>
+                <button onClick={toggleAddCard} className="tasks__card__add__addbutton closebutton" >Відмінити</button>
+            </div> : <div onClick={toggleAddCard} className="tasks__card__add__task">
+                    <i>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 1V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </i>
+                    <span>
+                        Нова задача
                 </span>
-            </div>
+                </div>}
+
+
+
 
         </div>
     );

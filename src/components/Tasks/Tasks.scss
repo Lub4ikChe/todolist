@@ -25,7 +25,7 @@
             margin-left: 14px;
             cursor: pointer;
             opacity: 0.3;
-            transition: all .5s;
+            transition: opacity .5s;
 
             &:hover {
                 opacity: 1;
@@ -95,7 +95,7 @@
             right: 0;
             display: inline-block;
             opacity: 0;
-            transition: all .5s;
+            transition: opacity .5s;
 
             &:hover {
                 opacity: 1;
@@ -121,7 +121,7 @@
             }
 
            label {
-                transition: all .5s;
+                transition: opacity .5s;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -158,8 +158,9 @@
         display: flex;
         align-items: center;
         opacity: 0.4;
-        transition: all .5s;
+        transition: opacity .5s;
         font-size: 16px;
+        cursor: pointer;
 
         &:hover {
             opacity: 1;
@@ -172,6 +173,72 @@
 
         span {
 
+        }
+    }
+
+    &__add {
+    
+        margin-top: 20px;
+
+        &__input{
+        padding: 7px 11px;
+        background: #FFFFFF;
+        border: 1px solid #EFEFEF;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width: 415px;
+        height: 38px;
+        margin-bottom: 16px;
+
+            &:focus {
+                border: 1px solid #000000;
+            }
+    
+            &::placeholder {
+                color: #C7C7C7;
+            }
+        }
+
+        &__addbutton {
+            width: 145px;
+            height: 34px;
+            color: #09011A;
+            font-weight: 600;
+            padding: 9px 0;
+            cursor: pointer;
+            background: #FFFFFF;
+            border: 1px solid #4DD599;
+            box-sizing: border-box;
+            border-radius: 4px;
+            transition: all .5s;
+            margin-right: 9px;
+    
+            &:hover {
+                background-color: #4DD599;
+            }
+
+            &:active {
+                background-color: darken(#4DD599, 25%);
+            }
+        }
+    }
+
+    .closebutton {
+        width: 90px;
+        height: 34px;
+        background: #CFCFCF;
+        border-color: #CFCFCF;
+        color: #636363;
+
+        &:hover {
+            border-color: #4DD599;
+            color: #000000;
+            background-color: #4DD599;
+        }
+
+        &:active {
+            color: #000000;
+            background-color: darken(#4DD599, 25%);
         }
     }
 
