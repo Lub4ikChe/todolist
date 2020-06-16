@@ -16,7 +16,7 @@ function Addtask() {
         { id: 8, hex: "#FF6464", name: "red" }
     ];
 
-    const [showMenu, setShowMenu] = useState(true);
+    const [showMenu, setShowMenu] = useState(false);
 
     const hendlerOpenMenu = () => {
         setShowMenu(true);

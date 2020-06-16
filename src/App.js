@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Sidebar from './components/Sidebar/Sidebar';
+import Tasks from './components/Tasks/Tasks';
 
 
 
@@ -12,7 +13,7 @@ function App() {
         <Sidebar />
       </div>
       <div className="todo__tasks">
-        sadasdas
+        <Tasks />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@
     font-size: 14px;
 
     &__sidebar {
+        overflow: auto;
         background-color: #B6E6BD;
         width: 200px;
         height: inherit;
@@ -20,6 +21,8 @@
     }
 
     &__tasks {
+        overflow: auto;
+        padding: 41px 35px;
         background-color: #fff;
         width: 546px;
         height: inherit;
