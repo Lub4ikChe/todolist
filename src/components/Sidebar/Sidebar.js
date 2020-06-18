@@ -4,7 +4,7 @@ import List from './List/List';
 import Addtask from './Addtask/Addtask';
 
 
-function Sidebar() {
+function Sidebar({ lists, colors, addTaskMenuFunctions }) {
 
     return (
         <Fragment>
@@ -17,9 +17,9 @@ function Sidebar() {
                 <span>Всі таски</span>
             </div>
             <div className="sidebar__tasks">
-                <List />
+                <List lists={lists} colors={colors} />
             </div>
-            <Addtask />
+            <Addtask colors={colors} addTaskMenuFunctions={addTaskMenuFunctions} />
         </Fragment>
     );
 }

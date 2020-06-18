@@ -3,21 +3,17 @@ import './List.scss';
 import Badge from '../../Badge/Badge';
 
 
-function List() {
-
-    let lists = [{ id: 1, name: "Продажи", color: "green" },
-    { id: 2, name: "Фронтенд", color: "blue" },
-    { id: 3, name: "Фильмы и сериалы", color: "red" }];
-
+function List({ lists, colors }) {
 
     return (
         <ul className="list">
 
             {lists.map(e => {
+                let colorName = colors.filter(el => el.id === e.colorId)[0].name;
                 return (
                     <li key={e.id} className={''}>
                         <div>
-                            <Badge color={e.color} />
+                            <Badge color={`${colorName}`} />
                             <span>{e.name}</span>
                         </div>
                         <i className="remove__task__btn">
