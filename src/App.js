@@ -3,10 +3,10 @@ import './App.scss';
 import Sidebar from './components/Sidebar/Sidebar';
 import Tasks from './components/Tasks/Tasks';
 import { connect } from 'react-redux';
-import { showAddTaskMenu, hideAddTaskMenu, showAddCard, hideAddCard, addListItem, removListItem } from './redux/actions';
+import { showAddTaskMenu, hideAddTaskMenu, showAddCard, hideAddCard, addListItem, removListItem, addTaskItem, removTaskItem, toggleTaskItemCompleted, changeListItemName } from './redux/actions';
 
 
-function App({ lists, colors, showAddTaskMenu, hideAddTaskMenu, showMenu, tasks, showAddCard, hideAddCard, showAddCardMenu, addListItem, removListItem }) {
+function App({ lists, colors, showAddTaskMenu, hideAddTaskMenu, showMenu, tasks, showAddCard, hideAddCard, showAddCardMenu, addListItem, removListItem, addTaskItem, removTaskItem, toggleTaskItemCompleted, changeListItemName }) {
 
   const addTaskMenuFunctions = {
     showAddTaskMenu,
@@ -19,6 +19,7 @@ function App({ lists, colors, showAddTaskMenu, hideAddTaskMenu, showMenu, tasks,
     showAddCardMenu,
     hideAddCard,
     showAddCard,
+    addTaskItem,
   };
 
   return (
@@ -27,7 +28,7 @@ function App({ lists, colors, showAddTaskMenu, hideAddTaskMenu, showMenu, tasks,
         <Sidebar lists={lists} colors={colors} removListItem={removListItem} addTaskMenuFunctions={addTaskMenuFunctions} />
       </div>
       <div className="todo__tasks">
-        <Tasks tasks={tasks} lists={lists} colors={colors} cardTaskMenu={cardTaskMenu} />
+        <Tasks tasks={tasks} lists={lists} changeListItemName={changeListItemName} toggleTaskItemCompleted={toggleTaskItemCompleted} removTaskItem={removTaskItem} colors={colors} cardTaskMenu={cardTaskMenu} />
       </div>
     </div>
   );
@@ -51,6 +52,10 @@ const mapDispatchToProps = {
   hideAddCard,
   addListItem,
   removListItem,
+  addTaskItem,
+  removTaskItem,
+  toggleTaskItemCompleted,
+  changeListItemName,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

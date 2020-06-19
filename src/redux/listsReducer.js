@@ -1,4 +1,4 @@
-import { SHOW_ADD_TASK_MENU, HIDE_ADD_TASK_MENU, ADD_NEW_LIST_ITEM, REMOVE_LIST_ITEM } from "./types";
+import { SHOW_ADD_TASK_MENU, HIDE_ADD_TASK_MENU, ADD_NEW_LIST_ITEM, REMOVE_LIST_ITEM, CHANGE_LIST_ITEM_NAME } from "./types";
 
 let lists = [
     { id: 1, name: "Курс по ReactJS ToDo", colorId: 7 },
@@ -26,6 +26,16 @@ export const listsReducer = (state = initialState, action) => {
 
         case REMOVE_LIST_ITEM:
             return { ...state, lists: [...state.lists.filter(elem => elem.id !== action.payload)] };
+
+        case CHANGE_LIST_ITEM_NAME:
+            return {
+                ...state, lists: [...state.lists].map(list => {
+                    if (list.id === action.payload.listItemId) {
+                        list.name = action.payload.newName;
+                    }
+                    return list;
+                })
+            };
 
         default:
             return state;
