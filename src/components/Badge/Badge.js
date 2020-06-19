@@ -2,10 +2,12 @@ import React from 'react';
 import './Badge.scss';
 
 
-function Badge({ color }) {
-
+function Badge({ color, setcolorIdValue, colorId, active }) {
+    let activeClass = active === true ? 'active' : '';
     return (
-        <i className={`badge badge--${color}`}></i>
+        <i
+            onClick={() => setcolorIdValue(colorId)}
+            className={`badge badge--${color} ${activeClass}`}></i>
     );
 }
 

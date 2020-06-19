@@ -1,4 +1,4 @@
-import { SHOW_ADD_TASK_MENU, HIDE_ADD_TASK_MENU } from "./types";
+import { SHOW_ADD_TASK_MENU, HIDE_ADD_TASK_MENU, ADD_NEW_LIST_ITEM, REMOVE_LIST_ITEM } from "./types";
 
 let lists = [
     { id: 1, name: "Курс по ReactJS ToDo", colorId: 7 },
@@ -20,6 +20,12 @@ export const listsReducer = (state = initialState, action) => {
 
         case HIDE_ADD_TASK_MENU:
             return { ...state, showAddTaskMenu: false };
+
+        case ADD_NEW_LIST_ITEM:
+            return { ...state, lists: [...state.lists, action.payload] };
+
+        case REMOVE_LIST_ITEM:
+            return { ...state, lists: [...state.lists.filter(elem => elem.id !== action.payload)] };
 
         default:
             return state;
