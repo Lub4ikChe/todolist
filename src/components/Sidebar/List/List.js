@@ -16,7 +16,7 @@ function List({ setActive, setActiveListItem, activeListItem, history, lists, co
                         className={`${activeListItem && activeListItem === listItem.id ? 'active' : ''}`}>
                         <div
                             onClick={() => {
-                                setActiveListItem(listItem.id);
+                                // setActiveListItem(listItem.id);
                                 history.push(`/lists/${listItem.id}`);
                                 setActive(false);
                             }}>
