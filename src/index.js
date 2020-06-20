@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, compose } from 'redux';
 import { rootReducer } from './redux/rootReducer';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(rootReducer, compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -14,7 +15,9 @@ const store = createStore(rootReducer, compose(
 
 const app = (
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 );
 

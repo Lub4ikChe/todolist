@@ -1,16 +1,17 @@
-import { SHOW_ADD_TASK_MENU, HIDE_ADD_TASK_MENU, ADD_NEW_LIST_ITEM, REMOVE_LIST_ITEM, CHANGE_LIST_ITEM_NAME } from "./types";
+import { SHOW_ADD_TASK_MENU, HIDE_ADD_TASK_MENU, ADD_NEW_LIST_ITEM, REMOVE_LIST_ITEM, CHANGE_LIST_ITEM_NAME, SET_ACTIVE_LIST_ITEM } from "./types";
 
 let lists = [
-    { id: 1, name: "Курс по ReactJS ToDo", colorId: 7 },
+    { id: 1, name: "ReactJS", colorId: 7 },
     { id: 2, name: "Фронтенд", colorId: 4 },
-    { id: 3, name: "Фильмы и сериалы", colorId: 3 },
-    { id: 4, name: "Книги", colorId: 2 },
-    { id: 5, name: "Личное", colorId: 1 }
+    { id: 3, name: "Фільми та серіали", colorId: 3 },
+    { id: 4, name: "Книжки", colorId: 2 },
+    { id: 5, name: "Особисте", colorId: 1 }
 ];
 
 const initialState = {
     lists,
     showAddTaskMenu: false,
+    activeList: null,
 };
 
 export const listsReducer = (state = initialState, action) => {
@@ -35,6 +36,11 @@ export const listsReducer = (state = initialState, action) => {
                     }
                     return list;
                 })
+            };
+
+        case SET_ACTIVE_LIST_ITEM:
+            return {
+                ...state, activeList: action.payload
             };
 
         default:

@@ -3,7 +3,7 @@ import './List.scss';
 import Badge from '../../Badge/Badge';
 
 
-function List({ lists, colors, removListItem }) {
+function List({ setActive, setActiveListItem, activeListItem, history, lists, colors, removListItem }) {
 
     return (
         <ul className="list">
@@ -11,7 +11,14 @@ function List({ lists, colors, removListItem }) {
             {lists.map(listItem => {
                 let colorName = colors.filter(colorItem => colorItem.id === listItem.colorId)[0].name;
                 return (
-                    <li key={listItem.id} className={''}>
+                    <li
+                        onClick={() => {
+                            setActiveListItem(listItem.id);
+                            history.push(`/lists/${listItem.id}`);
+                            setActive(false);
+                        }}
+                        key={listItem.id}
+                        className={`${activeListItem && activeListItem === listItem.id ? 'active' : ''}`}>
                         <div>
                             <Badge color={`${colorName}`} />
                             <span>{listItem.name}</span>
