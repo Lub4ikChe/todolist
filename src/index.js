@@ -7,11 +7,20 @@ import { createStore, compose } from 'redux';
 import { rootReducer } from './redux/rootReducer';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { loadState, saveState } from './localStorage/localStorage';
+import { throttle } from 'lodash';
 
-const store = createStore(rootReducer, compose(
+
+const persistedState = loadState();
+
+const store = createStore(rootReducer, persistedState, compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ));
 
+
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}, 3000))
 
 const app = (
   <Provider store={store}>
