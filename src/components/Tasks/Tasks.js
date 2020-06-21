@@ -27,8 +27,24 @@ function Tasks({ activeListItem, renderAll, tasks, colors, lists, cardTaskMenu, 
 
 
     let elemsToRender = renderAll ? lists : lists.filter(el => el.id === activeListItem);
-    return (
+    if (elemsToRender.length < 1 && activeListItem) {
+        return (
+            <div className="list-err">
+                Список задач відсутній
+            </div>
+        )
 
+    }
+
+    if (elemsToRender.length < 1 && !activeListItem) {
+        return (
+            <div className="list-err">
+                Списки задач відсутні, додайте новий список
+            </div>
+        )
+    }
+
+    return (
         elemsToRender.map((listItem => {
             let colorName = colors.filter(colorItem => colorItem.id === listItem.colorId)[0].name;
             return (

@@ -7,6 +7,7 @@ function Addtask({ colors, addTaskMenuFunctions }) {
 
     const [inputValue, setInputValue] = useState('');
     const [colorIdValue, setcolorIdValue] = useState(1);
+    const [showMenu, setShowMenu] = useState(false);
 
     const addNewTask = (name, colorId) => {
         if (name && colorId) {
@@ -16,21 +17,19 @@ function Addtask({ colors, addTaskMenuFunctions }) {
                 colorId
             };
             addListItem(newListItem);
-            hideMenu();
+            setShowMenu(false);
             setcolorIdValue(1);
             setInputValue('');
 
         }
     }
 
-    const showMenu = addTaskMenuFunctions.showAddTaskMenu;
-    const hideMenu = addTaskMenuFunctions.hideAddTaskMenu;
-    const showMenuState = addTaskMenuFunctions.showMenu;
+
     const addListItem = addTaskMenuFunctions.addListItem;
 
     return (
         <Fragment>
-            <div className="addtask" onClick={showMenu}>
+            <div className="addtask" onClick={() => setShowMenu(true)}>
                 <i>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 1V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -39,9 +38,9 @@ function Addtask({ colors, addTaskMenuFunctions }) {
                 </i>
                 <span>Додати нове завдання</span>
             </div>
-            <div className="addtask__menu" style={{ display: showMenuState ? 'block' : 'none' }}>
+            <div className="addtask__menu" style={{ display: showMenu ? 'block' : 'none' }}>
                 <div className="menu__close__btn" onClick={() => {
-                    hideMenu();
+                    setShowMenu(false);
                     setcolorIdValue(1);
                     setInputValue('');
                 }}>

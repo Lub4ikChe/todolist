@@ -3,26 +3,25 @@ import './App.scss';
 import Sidebar from './components/Sidebar/Sidebar';
 import Tasks from './components/Tasks/Tasks';
 import { connect } from 'react-redux';
-import { showAddTaskMenu, hideAddTaskMenu, addListItem, removListItem, addTaskItem, removTaskItem, toggleTaskItemCompleted, changeListItemName, setActiveListItem } from './redux/actions';
+import { addListItem, removListItem, addTaskItem, removTaskItem, toggleTaskItemCompleted, changeListItemName, setActiveListItem } from './redux/actions';
 import { useHistory, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 
-function App({ setActiveListItem, activeListItem, lists, colors, showAddTaskMenu, hideAddTaskMenu, showMenu, tasks, addListItem, removListItem, addTaskItem, removTaskItem, toggleTaskItemCompleted, changeListItemName }) {
+function App({ setActiveListItem, activeListItem, lists, colors, tasks, addListItem, removListItem, addTaskItem, removTaskItem, toggleTaskItemCompleted, changeListItemName }) {
 
   let history = useHistory();
 
   useEffect(() => {
+    let splitedId = +history.location.pathname.split('lists/')[1];
     history.listen(() => {
-      setActiveListItem(+history.location.pathname.split('lists/')[1]);
+      let splitedId = +history.location.pathname.split('lists/')[1];
+      setActiveListItem(splitedId);
     })
-    setActiveListItem(+history.location.pathname.split('lists/')[1]);
+    setActiveListItem(splitedId);
   }, [setActiveListItem, history])
 
 
   const addTaskMenuFunctions = {
-    showAddTaskMenu,
-    hideAddTaskMenu,
-    showMenu,
     addListItem,
   };
 
@@ -40,8 +39,10 @@ function App({ setActiveListItem, activeListItem, lists, colors, showAddTaskMenu
         <Route exact path='/' >
           <Tasks renderAll={true} tasks={tasks} lists={lists} changeListItemName={changeListItemName} toggleTaskItemCompleted={toggleTaskItemCompleted} removTaskItem={removTaskItem} colors={colors} cardTaskMenu={cardTaskMenu} />
         </Route>
-        <Route path={`/lists/${activeListItem}`}>
+        <Route exact path={`/lists/${activeListItem}`}>
           <Tasks renderAll={false} activeListItem={activeListItem} tasks={tasks} lists={lists} changeListItemName={changeListItemName} toggleTaskItemCompleted={toggleTaskItemCompleted} removTaskItem={removTaskItem} colors={colors} cardTaskMenu={cardTaskMenu} />
+        </Route>
+        <Route>
         </Route>
       </div>
     </div>
@@ -52,7 +53,6 @@ function App({ setActiveListItem, activeListItem, lists, colors, showAddTaskMenu
 const mapStateToProps = state => {
   return {
     lists: state.lists.lists,
-    showMenu: state.lists.showAddTaskMenu,
     colors: state.colors.colors,
     tasks: state.tasks.tasks,
     activeListItem: state.lists.activeList,
@@ -60,8 +60,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  showAddTaskMenu,
-  hideAddTaskMenu,
   addListItem,
   removListItem,
   addTaskItem,
