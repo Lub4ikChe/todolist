@@ -13,7 +13,7 @@ function AddTaskForm({ setInputValue, inputValue, listItem, addNewTask }) {
                     <input
                         value={inputValue}
                         onChange={event => setInputValue(event.target.value)}
-                        placeholder="Текс завдання"
+                        placeholder="Текст завдання"
                         className="tasks__card__add__input"
                     />
 
