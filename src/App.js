@@ -33,7 +33,7 @@ function App({ setActiveListItem, activeListItem, lists, colors, tasks, addListI
   return (
     <div className="todo">
       <div className="todo__sidebar">
-        <Sidebar setActiveListItem={setActiveListItem} activeListItem={activeListItem} history={history} lists={lists} colors={colors} removListItem={removListItem} addTaskMenuFunctions={addTaskMenuFunctions} />
+        <Sidebar tasks={tasks} setActiveListItem={setActiveListItem} activeListItem={activeListItem} history={history} lists={lists} colors={colors} removListItem={removListItem} addTaskMenuFunctions={addTaskMenuFunctions} />
       </div>
       <div className="todo__tasks">
         <Route exact path='/' >
