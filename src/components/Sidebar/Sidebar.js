@@ -4,7 +4,7 @@ import List from './List/List';
 import Addtask from './Addtask/Addtask';
 
 
-function Sidebar({ setActiveListItem, activeListItem, history, lists, colors, addTaskMenuFunctions, removListItem }) {
+function Sidebar({ tasks, setActiveListItem, activeListItem, history, lists, colors, addTaskMenuFunctions, removListItem }) {
 
     const [active, setActive] = useState(false);
 
@@ -25,7 +25,7 @@ function Sidebar({ setActiveListItem, activeListItem, history, lists, colors, ad
                 <span>Всі таски</span>
             </div>
             <div className="sidebar__tasks">
-                <List setActive={setActive} setActiveListItem={setActiveListItem} activeListItem={activeListItem} history={history} lists={lists} colors={colors} removListItem={removListItem} />
+                <List tasks={tasks} setActive={setActive} setActiveListItem={setActiveListItem} activeListItem={activeListItem} history={history} lists={lists} colors={colors} removListItem={removListItem} />
             </div>
             <Addtask colors={colors} addTaskMenuFunctions={addTaskMenuFunctions} />
         </Fragment>

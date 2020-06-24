@@ -1,4 +1,4 @@
-import { ADD_NEW_TASK_ITEM, REMOVE_TASK_ITEM, TOGGLE_TASK_ITEM_COMPLETED } from "./types";
+import { ADD_NEW_TASK_ITEM, REMOVE_TASK_ITEM, TOGGLE_TASK_ITEM_COMPLETED, REMOVE_LIST_ITEM } from "./types";
 
 let tasks = [
 
@@ -17,6 +17,10 @@ export const tasksReducer = (state = initialState, action) => {
 
         case REMOVE_TASK_ITEM:
             return { ...state, tasks: [...state.tasks.filter(elem => elem.id !== action.payload)] };
+
+        case REMOVE_LIST_ITEM:
+            return { ...state, tasks: [...state.tasks.filter(elem => elem.listId !== action.payload)] };
+
 
         case TOGGLE_TASK_ITEM_COMPLETED:
             return {

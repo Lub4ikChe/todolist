@@ -3,13 +3,13 @@ import './List.scss';
 import Badge from '../../Badge/Badge';
 
 
-function List({ setActive, setActiveListItem, activeListItem, history, lists, colors, removListItem }) {
+function List({ tasks, setActive, setActiveListItem, activeListItem, history, lists, colors, removListItem }) {
 
     return (
         <ul className="list">
-
             {lists.map(listItem => {
                 let colorName = colors.filter(colorItem => colorItem.id === listItem.colorId)[0].name;
+                let numOfActiveTasks = tasks.filter(taskItem => !taskItem.completed && taskItem.listId === listItem.id).length;
                 return (
                     <li
                         key={listItem.id}
@@ -22,6 +22,7 @@ function List({ setActive, setActiveListItem, activeListItem, history, lists, co
                             }}>
                             <Badge color={`${colorName}`} />
                             <span>{listItem.name}</span>
+                            <span>{` (${numOfActiveTasks})`}</span>
                         </div>
                         <i onClick={() => {
                             removListItem(listItem.id);
